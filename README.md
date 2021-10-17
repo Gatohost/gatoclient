@@ -2,6 +2,7 @@
 ### The Krunker Client that I painstakingly put together (twice)
 
 Gatoclient is a Krunker client created and managed by creepycats.
+
 Gatoclient is owned in part by [Gatohost](https://gatohost.tk) | Krunker.io is owned and licensed by Yendis AG Switzerland (copyright & trademark)
 
 If you would like to support me, consider following me on my Twitch or Youtube:
