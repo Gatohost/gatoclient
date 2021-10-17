@@ -1,0 +1,26 @@
+@font-face {
+  font-family: BaiJamjuree-Light;
+  src: url(../fonts/BaiJamjuree-Light.ttf);
+  font-weight: normal;
+}
+body {
+ background-image: url("../images/background.png");
+ background-size: cover;
+ background-repeat: no-repeat;
+ background-color: #cccccc;
+ font-family: BaiJamjuree-Light;
+ color:white;
+}
+.titleHolder {
+    margin: 0px 20px 0 0;  
+    overflow: auto
+}
+.titleImage {
+    float: left
+}
+.titleImage img {
+    display: block
+}
+.title {
+    margin-left: 80px
+}

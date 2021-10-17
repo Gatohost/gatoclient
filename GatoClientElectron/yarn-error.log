@@ -1,0 +1,48 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Gus\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add electron-builder --dev
+
+PATH: 
+  C:\Program Files\Oculus\Support\oculus-runtime;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\Program Files (x86)\VMware\VMware Player\bin\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Java\jdk1.8.0_251\bin;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\Gus\AppData\Local\Microsoft\WindowsApps;C:\Users\Gus\.dotnet\tools;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\HaxeToolkit\haxe;C:\HaxeToolkit\neko;C:\Python30\;C:\Python30\Scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\ProgramFiles\HaxeToolkit\haxe;C:\ProgramFiles\HaxeToolkit\neko;C:\Program Files\Git\cmd;C:\Program Files\PuTTY\;C:\Users\Gus\AppData\Local\Programs\Python\Python38-32\Scripts;C:\Program Files\heroku\bin;C:\Users\Gus\AppData\Local\Microsoft\WindowsApps;C:\Users\Gus\AppData\Roaming\npm;C:\Program Files (x86)\GitHub CLI\
+
+Yarn version: 
+  1.22.11
+
+Node version: 
+  14.17.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EBUSY: resource busy or locked, unlink 'C:\Users\Gus\Documents\GatoClientElectron\node_modules\electron\dist\icudtl.dat'
+
+npm manifest: 
+  {
+    "name": "GatoClient",
+    "version": "1.0.0",
+    "description": "Gatoclient New Version for Krunker Using Electron",
+    "main": "main.js",
+    "scripts": {
+      "start": "electron .",
+      "pack": "electron-builder --dir",
+      "dist": "electron-builder",
+      "release": "electron-builder",
+      "postinstall": "electron-builder install-app-deps"
+    },
+    "author": "creepycatsTTV",
+    "license": "ISC",
+    "homepage": "https://gatohost.tk",
+    "keywords": [
+      "Krunker"
+    ],
+    "devDependencies": {
+      "electron": "^10.4.7",
+      "electron-builder": "^22.10.5"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

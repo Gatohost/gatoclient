@@ -1,0 +1,39 @@
+<head>
+    <link rel="stylesheet" href="css/settings.css">
+</head>
+<body>
+    <div class="titleHolder">
+        <img src="images/logo.png" class="titleImage" width="75" height="75">
+        <h3 class="title">Gatoclient Settings</h3>
+    </div>
+    <p class="subtitle">I was too lazy to add them normally :D <br> Settings take effect after restart</p>
+    <div class="container">
+        <div id="content">
+            <form action="">
+                <p>
+                    <span>Uncap FPS</span> <label for="fpsUncap"></label> <span>
+                        <input type="checkbox" name="fpsUncap" value="false" id="fpsUncap">
+                    </span>
+                </p>
+                <p>
+                    <span>Discord RPC</span> <label for="discordrpc"></label> <span>
+                        <input type="checkbox" name="discordrpc" value="false" id="discordrpc">
+                    </span>
+                </p>
+                <p>
+                    <span>Custom Sky Color</span> <label for="skyColor"></label> <span>
+                        <input type="checkbox" name="skyColor" value="false" id="skyColor">
+                    </span>
+                </p>
+                <p>
+                    <span>Sky Color</span> <label for="skyColorValue"></label> <span>
+                        <input type="text" name="skyColorValue" value="#78ddff">
+                    </span>
+                </p>
+                <p>
+                    <button id="saveValues">Save</button>
+                </p>
+            </form>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,42 @@
+#initLoader{
+    background-image: url(https://media.discordapp.net/attachments/661004708852269080/867827020884213780/Screenshot_2021-07-22_131147.png?width=932&height=467)!important;
+    background-size:cover;
+}
+
+#loadInfoRHolder{
+    background-color:#0000003b;
+    padding: 10px 10px;
+}
+#loadInfoLHolder{
+    background-color:#0000003b;
+    padding: 10px 10px;
+}
+#loadTipsHolder{
+    background-color:#0000003b;
+    padding: 10px 10px;
+}
+#loadInfoLHolder::after{
+    position:fixed;
+    background-color:#0000003b;
+    padding: 10px 10px;
+    content: "Gatoclient by creepycatsttv";
+    width:370px;
+    bottom: -0.8%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#mainLogo{
+    content: url(https://cdn.discordapp.com/attachments/661004708852269080/859574411770200064/logo_1.png);
+}
+#aHider{
+    display:none!important;
+}
+#mapInfo::before {
+    visibility: visible;
+    z-index:100;
+    content: 'Gatoclient | ';
+    width:600px;
+	bottom: 75px;
+	font-size:20px;
+	display:
+}
