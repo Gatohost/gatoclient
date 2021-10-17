@@ -16,7 +16,7 @@ If you would like to support me, consider following me on my Twitch or Youtube:
 - Discord RPC
 - Browserfps Proxy Integration
 - Custom UI and CSS + Loading screen
-- CSS Swapper
+- CSS Swapper (Documents > GatoclientResourceSwapper > CSS)
 
 ###  Custom Loading Screen
 ![Loading Screen](https://cdn.discordapp.com/attachments/661004708852269080/899423342501703771/unknown.png)
