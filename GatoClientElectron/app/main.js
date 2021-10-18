@@ -7,6 +7,13 @@ const DiscordRpc = require("discord-rpc");
 const os = require('os');
 const { app, ipcMain, BrowserWindow, screen } = electron;
 
+// Create Swapper folder if not existing
+var swapperFolder = path.join(app.getPath("documents"), "GatoclientResourceSwapper/CSS");
+
+if (!fs.existsSync(swapperFolder)) {
+    fs.mkdirSync(swapperFolder, { recursive: true });
+};
+
 // Rich Presence
 const clientId = "859516621416169522";
 const rpc = new DiscordRpc.Client({ transport: 'ipc' });
@@ -120,12 +127,6 @@ app.on('ready', function () {
         async (_, activity) => { await setActivity(activity); });
 
     // CSS swap
-    var swapperFolder = path.join(app.getPath("documents"), "GatoclientResourceSwapper/CSS");
-
-    if (!fs.existsSync(swapperFolder)) {
-        fs.mkdirSync(swapperFolder, { recursive: true });
-    };
-
     mainWindow.webContents.on('dom-ready', function () {
         console.log('Attempting to load CSS...');
         fs.readFile(__dirname + '/packagedCSS/main_custom.css', "utf-8", function (error, data) {
