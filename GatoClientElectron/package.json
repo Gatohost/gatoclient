@@ -1,27 +1,32 @@
 {
   "name": "GatoClient",
-  "version": "1.0.0",
-  "description": "Gatoclient New Version for Krunker Using Electron",
+  "version": "1.1.0",
+  "description": "Gatoclient Krunker Client by creepycats",
   "main": "./app/main.js",
   "scripts": {
     "start": "electron .",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
-    "release": "electron-builder",
+    "release": "electron-builder --publish always",
     "postinstall": "electron-builder install-app-deps"
   },
   "author": "creepycatsTTV",
-  "license": "ISC",
+  "license": "MIT",
   "homepage": "https://gatohost.tk",
   "keywords": [
     "Krunker"
   ],
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/creepycats/gatoclient.git"
+  },
   "devDependencies": {
     "electron": "^10.4.7",
     "electron-builder": "^22.13.1"
   },
   "dependencies": {
     "@electron/remote": "^2.0.1",
-    "discord-rpc": "^4.0.1"
+    "discord-rpc": "^4.0.1",
+    "electron-updater": "^4.3.9"
   }
 }

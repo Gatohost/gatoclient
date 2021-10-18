@@ -8,7 +8,9 @@ const os = require('os');
 const { app, ipcMain, BrowserWindow, screen } = electron;
 
 // Preload things
-window.OffCliV = "gato" // get rid of client unsupported message
+
+// get rid of client unsupported message
+window.OffCliV = "gato";
 
 // Lets us exit the game lmao
 document.addEventListener("keydown", (event) => {
@@ -27,12 +29,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const menuContainer = document.getElementById("menuItemContainer");
     menuContainer.appendChild(menuItem);
 
+    // Add Menu Click Event
     const { ipcRenderer } = require('electron');
     ipcRenderer.send('preloadNeedSettings');
     menuItem.addEventListener("click", (event) => { ipcRenderer.send('openSettings'); });
 })
 
-window.prompt = () => { // import settings fix
+// Fix settings importing
+window.prompt = () => { 
     var tempHTML = '<div class="setHed">Import Settings</div>';
     tempHTML +=
         '<div class="settName" id="importSettings_div" style="display:block">Settings String<input type="url" placeholder="Paste Settings String Here" name="url" class="inputGrey2" id="settingString"></div>';
@@ -57,6 +61,7 @@ window.prompt = () => { // import settings fix
     }
 };
 
+// When Settings are recieved run scripts
 const { ipcRenderer } = require('electron');
 ipcRenderer.on('preloadSettings', (event, preferences) => {
     let filePath = preferences;
@@ -65,7 +70,7 @@ ipcRenderer.on('preloadSettings', (event, preferences) => {
     let scripts =
         [
             () => {
-                // SKY COLOR SCRIPT
+                // Sky color script: Thank you Janrex
                 if (userPrefs['skyColor'] == true) {
                     Reflect.defineProperty(Object.prototype, "skyCol", {
                         value: userPrefs['skyColorValue'],
@@ -74,6 +79,9 @@ ipcRenderer.on('preloadSettings', (event, preferences) => {
             }
         ]
     const runScripts = () => { scripts.forEach(script => { (script)() }); };
+    runScripts();
+
+    // Special Discord RPC script
     if (userPrefs['discordrpc'] == true) {
         let rpcscript =
             [
@@ -82,5 +90,4 @@ ipcRenderer.on('preloadSettings', (event, preferences) => {
         const runRPCScript = () => { rpcscript.forEach(script => { (script)() }); };
         runRPCScript();
     }
-    runScripts();
 });
