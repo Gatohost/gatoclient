@@ -39,3 +39,18 @@ _For the Setup Exe_
 
 ## Building Source
 Gatoclient is built using the same technique as IDKR uses, even though Gatoclient is a totally separate client
+
+You first need to install the source code.
+
+In the GatoclientElectron folder, open Command prompt / Powershell and run the command
+```sh
+npm install
+```
+This will install the dependencies. From there, if you want to just run Gatoclient from source, run
+```sh
+npm start
+```
+Or if you want to build it, you run
+```sh
+npm run dist
+```
