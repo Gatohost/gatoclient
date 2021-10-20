@@ -77,6 +77,31 @@ ipcMain.on('openSettings', (event) => {
     })
 });
 
+// When Changelog Clicked Open Changelog
+ipcMain.on('openChangelog', (event) => {
+    // Settings Menu Initialized
+    let chlgWindow = new BrowserWindow({
+        width: 490,
+        height: 725,
+        resizable: false
+    });
+    chlgWindow.loadURL(path.join(__dirname, 'changelog/changelog.html'));
+    chlgWindow.show();
+    chlgWindow.center();
+    chlgWindow.removeMenu();
+
+    // Close on main close
+    mainWindow.on('close', function () {
+        if (chlgWindow != null)
+            chlgWindow.close();
+    })
+
+    // Fix Object Destroyed Error with Closing
+    chlgWindow.on('close', function () {
+        chlgWindow = null;
+    })
+});
+
 // Save settings when sent to main process
 let inputs;
 ipcMain.on('savedSettings', (event, preferences) => {
@@ -89,28 +114,89 @@ ipcMain.on('savedSettings', (event, preferences) => {
 ipcMain.on('preloadNeedSettings', (event) => {
     mainWindow.webContents.send('preloadSettings', path.join(app.getPath("documents"), "GatoclientResourceSwapper/settings.json"));
 });
+ipcMain.on('splashNeedInfo', (event) => {
+    splashWindow.webContents.send('splashInfo', app.getVersion());
+});
 
-//Listen for app to get ready
-app.on('ready', function () {
-    // Before we can read the settings, we need to make sure they exist, if they don't, then we create a template
-    if (fs.existsSync(path.join(app.getPath("documents"), "GatoclientResourceSwapper/settings.json")) == false) {
-        fs.writeFileSync(path.join(app.getPath("documents"), "GatoclientResourceSwapper/settings.json"), '{ "fpsUncap": false, "discordrpc": true, "skyColor": false, "skyColorValue": "#FF0000" }', { flag: 'wx' }, function (err) {
-            if (err) throw err;
-            console.log("It's saved!");
-        });
-    }
+function sleep(ms) {
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+    });
+}
 
-    // Read settings to apply them to the command line arguments
-    let filePath = path.join(app.getPath("documents"), "GatoclientResourceSwapper/settings.json");
-    let userPrefs = JSON.parse(fs.readFileSync(filePath));
-    if (userPrefs['fpsUncap'] == true) {
-        app.commandLine.appendSwitch('disable-frame-rate-limit');
-        app.commandLine.appendSwitch("disable-gpu-vsync");
-    }
+// Before we can read the settings, we need to make sure they exist, if they don't, then we create a template
+if (fs.existsSync(path.join(app.getPath("documents"), "GatoclientResourceSwapper/settings.json")) == false) {
+    fs.writeFileSync(path.join(app.getPath("documents"), "GatoclientResourceSwapper/settings.json"), '{ "fpsUncap": false, "discordrpc": true, "skyColor": false, "skyColorValue": "#FF0000" }', { flag: 'wx' }, function (err) {
+        if (err) throw err;
+        console.log("It's saved!");
+    });
+}
+
+// Read settings to apply them to the command line arguments
+let filePath = path.join(app.getPath("documents"), "GatoclientResourceSwapper/settings.json");
+let userPrefs = JSON.parse(fs.readFileSync(filePath));
+if (userPrefs['fpsUncap'] == true) {
+    app.commandLine.appendSwitch('disable-frame-rate-limit');
+    app.commandLine.appendSwitch("disable-gpu-vsync");
+}
     // Heres some unused command line switches that I am too lazy to implement right now
     // app.commandLine.appendSwitch("autoplay-policy", "no-user-gesture-required");
     // app.commandLine.appendSwitch("disable-accelerated-2d-canvas", "true");
     // app.commandLine.appendSwitch("in-process-gpu");
+
+//Listen for app to get ready
+app.on('ready', function () {
+    // Make Splash Screen
+    splashWindow = new BrowserWindow({
+        autoHideMenuBar: true,
+        frame: false,
+        skipTaskbar: true,
+        webPreferences: {
+            preload: path.join(__dirname, 'splash/splashPreload.js')
+        }
+    });
+    splashWindow.setAlwaysOnTop(true, 'pop-up-menu');
+    splashWindow.loadURL(url.format({
+        pathname: path.join(__dirname, 'splash/splash.html'),
+        icon: __dirname + 'src/cat.ico' // Doesn't work anymore just ignore it
+    }));
+    splashWindow.setSize(512, 256);
+    splashWindow.center();
+    splashWindow.removeMenu();
+
+    // Check for updates
+    splashWindow.once('ready-to-show', () => {
+        autoUpdate();
+    });
+    async function autoUpdate() {
+        return new Promise((resolve, reject) => {
+            autoUpdater.checkForUpdatesAndNotify();
+
+            // Testing Only
+            launchGame();
+            resolve();
+
+            // Splash screen no update
+            autoUpdater.on('update-not-available', () => {
+                launchGame();
+                resolve();
+            });
+            // Splash screen update shits
+            autoUpdater.on('update-available', () => {
+                splashWindow.webContents.send('newVersion');
+                mainWindow.close();
+            });
+            autoUpdater.on('update-downloaded', () => {
+                autoUpdater.quitAndInstall();
+            });
+        });
+    }
+    // Splash Screen Shit
+    function launchGame() {
+        splashWindow.webContents.send('latest');
+        setTimeout(() => launchMainWindow(), 2000);
+        setTimeout(() => splashWindow.destroy(), 2000);
+    }
 
     //Make the window
     mainWindow = new BrowserWindow({
@@ -119,19 +205,19 @@ app.on('ready', function () {
             preload: path.join(__dirname, 'preload.js'),
         }
     });
-    mainWindow.setSize(1600, 900);
-    mainWindow.loadURL(url.format({
-        pathname: 'https://krunker.io',
-        icon: __dirname + 'src/cat.ico' // Doesn't work anymore just ignore it
-    }));
-    mainWindow.center();
-    mainWindow.removeMenu();
-    var mainWindowIsFullscreen = false;
+    mainWindow.hide();
 
-    // Check for updates
-    mainWindow.once('ready-to-show', () => {
-        autoUpdater.checkForUpdatesAndNotify();
-    });
+    function launchMainWindow() {
+        mainWindow.show();
+        mainWindow.setSize(1600, 900);
+        mainWindow.loadURL(url.format({
+            pathname: 'https://krunker.io',
+            icon: __dirname + 'src/cat.ico' // Doesn't work anymore just ignore it
+        }));
+        mainWindow.center();
+        mainWindow.removeMenu();
+        var mainWindowIsFullscreen = false;
+    }
 
     // Rich Presence
     ipcMain.handle("rpc-activity",
@@ -187,14 +273,6 @@ app.on('ready', function () {
             event.preventDefault();
         }
     })
-});
-
-// Handle Updating
-autoUpdater.on('update-available', () => {
-    // mainWindow.webContents.send('update_available');
-});
-autoUpdater.on('update-downloaded', () => {
-    autoUpdater.quitAndInstall();
 });
 
 // Just to make sure the Client Closes fully

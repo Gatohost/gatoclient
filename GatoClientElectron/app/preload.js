@@ -33,6 +33,36 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const { ipcRenderer } = require('electron');
     ipcRenderer.send('preloadNeedSettings');
     menuItem.addEventListener("click", (event) => { ipcRenderer.send('openSettings'); });
+
+    // Remove the broken revjet ad
+    if (document.contains(document.getElementById("revjet_container"))) {
+        document.getElementById("revjet_container").remove();
+    }
+
+    // Changelogs
+    const oldIcon = document.getElementById("updateAdIcon");
+    const updateHolder = document.getElementById("updateAd");
+    oldIcon.remove();
+    const newIcon = document.createElement("img");
+    newIcon.setAttribute("id", "helpPIcon");
+    newIcon.setAttribute("src", "https://cdn.discordapp.com/attachments/661004708852269080/899301043672842250/settingIcon.png");
+    updateHolder.insertBefore(newIcon, updateHolder.children[0]);
+    const updateDetailText = document.getElementById("updateAdVersion");
+    const HelpTextHoldersArray = document.querySelectorAll("#helpTxtHol");
+    console.log(HelpTextHoldersArray);
+    const updateDetailHolder = HelpTextHoldersArray[5];
+    updateDetailText.remove();
+    const newDetailText = document.createElement("div");
+    newDetailText.setAttribute("id", "helpGuidOpn");
+    newDetailText.innerHTML = "Gatoclient Updates";
+    updateDetailHolder.appendChild(newDetailText);
+
+    // Changelogs Click Event
+    const updateAdHolder = document.getElementById("updateAd");
+    updateAdHolder.removeAttribute("onclick");
+    updateAdHolder.addEventListener("click", (event) => {
+        ipcRenderer.send('openChangelog');
+    });
 })
 
 // Fix settings importing

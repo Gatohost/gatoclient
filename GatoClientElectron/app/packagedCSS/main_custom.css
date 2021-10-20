@@ -72,3 +72,11 @@
 	position:fixed;
 	top:55%;
 }
+
+/* Flashing Updates Box */
+#updateAd{
+	box-shadow:unset;
+	animation-name:freeKRPulse;
+	animation-duration:2s;
+	animation-iteration-count:infinite
+}

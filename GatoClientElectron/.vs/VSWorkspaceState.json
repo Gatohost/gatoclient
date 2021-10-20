@@ -3,8 +3,8 @@
     "",
     "\\app",
     "\\app\\scripts",
-    "\\app\\settings"
+    "\\app\\splash"
   ],
-  "SelectedNode": "\\app\\main.js",
+  "SelectedNode": "\\app\\splash\\splashPreload.js",
   "PreviewInSolutionExplorer": false
 }
