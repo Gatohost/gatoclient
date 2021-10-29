@@ -1,5 +1,6 @@
 # Gatoclient
 ### The Krunker Client that I painstakingly put together (twice)
+[![Discord Banner 2](https://discordapp.com/api/guilds/634754871232430115/widget.png?style=banner2)](https://discord.com/invite/ug7rQZT)
 
 Gatoclient is a Krunker client created and managed by creepycats.
 
