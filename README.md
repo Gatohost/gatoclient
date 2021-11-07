@@ -1,5 +1,5 @@
 # Gatoclient
-[![Gatohost](https://img.shields.io/badge/-%F0%9F%90%B1gatohost-informational)] [![Github All Releases](https://img.shields.io/github/downloads/creepycats/gatoclient/total.svg)]()
+[![Gatohost](https://img.shields.io/badge/-%F0%9F%90%B1gatohost-informational)]() [![Github All Releases](https://img.shields.io/github/downloads/creepycats/gatoclient/total.svg)]()
 ### The Krunker Client that I painstakingly put together (twice)
 [![Discord Banner 2](https://discordapp.com/api/guilds/634754871232430115/widget.png?style=banner2)](https://discord.com/invite/ug7rQZT)
 
