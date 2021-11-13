@@ -15,11 +15,12 @@ If you would like to support me, consider following me on my Twitch or Youtube:
 ## Features
 
 - Performance comparable to IDKR and Client++
-- Integrated Sky Color Module
+- Integrated Modules (Custom Sky, Billboards, FFA Matchmaker, etc)
 - Discord RPC
-- Browserfps Proxy Integration
+- Chat Emotes and Badges
 - Custom UI and CSS + Loading screen
 - CSS Swapper (Documents > GatoclientResourceSwapper > CSS)
+- Resource Swapper (Documents > GatoclientResourceSwapper > Mod)
 
 ###  Custom Loading Screen
 ![Loading Screen](https://cdn.discordapp.com/attachments/661004708852269080/899423342501703771/unknown.png)
@@ -31,16 +32,17 @@ If you would like to support me, consider following me on my Twitch or Youtube:
 - Go to the releases page
 - Download the appropriate portable or setup exe for your PC
 
-_For the Portable Exe_
-- Download and run, the game is already installed in the exe
-
-_For the Setup Exe_
+_For the Setup Exe (RECOMMENDED)_
 - Download the setup exe
 - Run The installer
 - Install Gatoclient using the installer
 - Run the exe on your desktop or your quick start menu
 
+_For the Portable Exe_
+- Download and run, the game is already installed in the exe
+
 ## Building Source
+### THIS IS OUTDATED SOURCE CODE. CONSIDER USING PREPACKAGED SETUP
 Gatoclient is built using the same technique as IDKR uses, even though Gatoclient is a totally separate client
 
 You first need to install the source code.
