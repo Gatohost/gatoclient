@@ -4,6 +4,7 @@
 [![Discord Banner 2](https://discordapp.com/api/guilds/634754871232430115/widget.png?style=banner2)](https://discord.com/invite/ug7rQZT)
 
 Gatoclient is a Krunker client created and managed by creepycats.
+(This was all made by just one developer. Keep that in mind)
 
 Gatoclient is owned in part by [Gatohost](https://gatohost.tk) | Krunker.io is owned and licensed by Yendis AG Switzerland (copyright & trademark)
 
