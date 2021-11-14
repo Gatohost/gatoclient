@@ -12,7 +12,7 @@ If you would like to support me, consider following me on my socials:
 
 [![Twitch](https://img.shields.io/badge/-Twitch%20-%23e2a1f7?style=for-the-badge&logo=twitch)](https://twitch.tv/creepycats) [![Youtube](https://img.shields.io/badge/-Youtube-%23ff5454?style=for-the-badge&logo=youtube)](https://www.youtube.com/c/creepycatsttv) [![Twitter](https://img.shields.io/badge/-Twitter-9cf?style=for-the-badge&logo=twitter)](https://twitter.com/creepycatsttv)
 
-## [<img src='https://img.shields.io/badge/-Features-blue?style=flat' width=225px height=75px>](https://github.com/Gatohost/gatoclient)
+## [<img src='https://img.shields.io/badge/-Features-blue?style=flat' width=225px height=75px>](https://github.com/Gatohost/gatoclient/wiki/Features)
 - Performance comparable to IDKR and Client++
 - Integrated Modules (Custom Sky, Billboards, FFA Matchmaker, etc)
 - Discord RPC
