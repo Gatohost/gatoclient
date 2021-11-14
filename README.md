@@ -1,5 +1,5 @@
 # Gatoclient
-[![Gatohost](https://img.shields.io/badge/-%F0%9F%90%B1gatohost-informational)]() [![Github All Releases](https://img.shields.io/github/downloads/creepycats/gatoclient/total.svg)]() [![Github Release Verison](https://img.shields.io/github/v/release/creepycats/gatoclient)]()
+[![Gatohost](https://img.shields.io/badge/-%F0%9F%90%B1gatohost-informational?style=for-the-badge)]() [![Github All Releases](https://img.shields.io/github/downloads/creepycats/gatoclient/total.svg?style=for-the-badge)]() [![Github Release Verison](https://img.shields.io/github/v/release/creepycats/gatoclient?style=for-the-badge)]()
 ### The Krunker Client that I painstakingly put together (twice)
 [![Discord Banner 2](https://discordapp.com/api/guilds/634754871232430115/widget.png?style=banner2)](https://discord.com/invite/ug7rQZT)
 
@@ -32,13 +32,13 @@ If you would like to support me, consider following me on my Twitch or Youtube:
 - Go to the releases page
 - Download the appropriate portable or setup exe for your PC
 
-_For the Setup Exe (RECOMMENDED)_
+_For Setup (RECOMMENDED)_
 - Download the setup exe
 - Run The installer
 - Install Gatoclient using the installer
 - Run the exe on your desktop or your quick start menu
 
-_For the Portable Exe_
+_For Portable_
 - Download and run, the game is already installed in the exe
 
 ## Building Source
