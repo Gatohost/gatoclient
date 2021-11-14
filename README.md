@@ -27,7 +27,7 @@ If you would like to support me, consider following me on my socials:
 ### Custom Settings and UI
 ![UI Example](https://media.discordapp.net/attachments/634754871894999051/899407146066804746/unknown.png?width=861&height=468)
 
-## [<img src='https://img.shields.io/badge/-Installation-blue?style=flat' width=275px height=75px>](https://github.com/Gatohost/gatoclient)
+## [<img src='https://img.shields.io/badge/-Installation-blue?style=flat' width=275px height=75px>](https://github.com/Gatohost/gatoclient/wiki/Installation)
 - Go to the releases page
 - Download the appropriate portable or setup exe for your PC
 
