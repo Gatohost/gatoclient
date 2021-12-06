@@ -1,82 +1,68 @@
-const electron = require('electron');
-const url = require('url');
-const path = require('path');
-const fs = require('fs');
-const { shell } = require('electron');
+const { app, ipcMain, BrowserWindow, screen, shell, ipcRenderer } = require("electron");
 const DiscordRpc = require("discord-rpc");
-const os = require('os');
-const { app, ipcMain, BrowserWindow, screen } = electron;
+const path = require("path");
+const url = require("url");
+const fs = require("fs");
+const os = require("os");
 
-// Preload things
-
-// get rid of client unsupported message
 window.OffCliV = "gato";
-
-// Lets us exit the game lmao
-document.addEventListener("keydown", (event) => {
-    if (event.code == "Escape") {
-        document.exitPointerLock();
-    }
-})
-
-// Settings Stuff
+document.addEventListener("keydown", (event) => { if (event.code == "Escape") document.exitPointerLock() }); // allows for exiting the game
 document.addEventListener("DOMContentLoaded", (event) => {
-    // Settings Menu Thing
-    const menuItem = document.createElement("div");
-    menuItem.setAttribute("id", "gatoMenuItem");
-    menuItem.setAttribute("class", "menuItem");
-    menuItem.innerHTML = '<img class="material-icons-outlined menBtnIcn" src="https://cdn.discordapp.com/attachments/661004708852269080/899301043672842250/settingIcon.png" onmouseenter="playTick()">';
+    const menuItem = document.createElement("div"); // ...
     const menuContainer = document.getElementById("menuItemContainer");
+    
+    menuItem
+      .setAttribute("id", "gatoMenuItem")
+      .setAttribute("class", "menuItem")
+      .innerHTML = '<img class="material-icons-outlined menBtnIcn" src="https://cdn.discordapp.com/attachments/661004708852269080/899301043672842250/settingIcon.png" onmouseenter="playTick()">';
     menuContainer.appendChild(menuItem);
 
     // Add Menu Click Event
-    const { ipcRenderer } = require('electron');
-    ipcRenderer.send('preloadNeedSettings');
-    menuItem.addEventListener("click", (event) => { ipcRenderer.send('openSettings'); });
-
-    // Remove the broken revjet ad
-    if (document.contains(document.getElementById("revjet_container"))) {
-        document.getElementById("revjet_container").remove();
-    }
+    ipcRenderer.send("preloadNeedSettings");
+    menuItem.addEventListener("click", (event) => { ipcRenderer.send("openSettings"); });
+    if (document.contains(document.getElementById("revjet_container"))) document.getElementById("revjet_container").remove();
 
     // Changelogs
     const oldIcon = document.getElementById("updateAdIcon");
     const updateHolder = document.getElementById("updateAd");
-    oldIcon.remove();
     const newIcon = document.createElement("img");
-    newIcon.setAttribute("id", "helpPIcon");
-    newIcon.setAttribute("src", "https://cdn.discordapp.com/attachments/661004708852269080/899301043672842250/settingIcon.png");
-    updateHolder.insertBefore(newIcon, updateHolder.children[0]);
     const updateDetailText = document.getElementById("updateAdVersion");
     const HelpTextHoldersArray = document.querySelectorAll("#helpTxtHol");
-    console.log(HelpTextHoldersArray);
     const updateDetailHolder = HelpTextHoldersArray[5];
-    updateDetailText.remove();
     const newDetailText = document.createElement("div");
-    newDetailText.setAttribute("id", "helpGuidOpn");
-    newDetailText.innerHTML = "Gatoclient Updates";
+    
+    oldIcon.remove();
+    newIcon
+      .setAttribute("id", "helpPIcon")
+      .setAttribute("src", "https://cdn.discordapp.com/attachments/661004708852269080/899301043672842250/settingIcon.png");
+    updateHolder.insertBefore(newIcon, updateHolder.children[0]); console.log(HelpTextHoldersArray); updateDetailText.remove();
+    
+    newDetailText
+      .setAttribute("id", "helpGuidOpn");
+      .innerHTML = "Gatoclient Updates";
     updateDetailHolder.appendChild(newDetailText);
 
     // Changelogs Click Event
     const updateAdHolder = document.getElementById("updateAd");
-    updateAdHolder.removeAttribute("onclick");
-    updateAdHolder.addEventListener("click", (event) => {
-        ipcRenderer.send('openChangelog');
+    updateAdHolder
+      .removeAttribute("onclick")
+      .addEventListener("click", (event) => {
+        ipcRenderer.send("openChangelog");
     });
-})
+});
 
 // Fix settings importing
 window.prompt = () => { 
     var tempHTML = '<div class="setHed">Import Settings</div>';
-    tempHTML +=
-        '<div class="settName" id="importSettings_div" style="display:block">Settings String<input type="url" placeholder="Paste Settings String Here" name="url" class="inputGrey2" id="settingString"></div>';
+    
+    tempHTML += '<div class="settName" id="importSettings_div" style="display:block">Settings String<input type="url" placeholder="Paste Settings String Here" name="url" class="inputGrey2" id="settingString"></div>';
     tempHTML += '<a class="+" id="importBtn">Import</a>';
+    
     menuWindow.innerHTML = tempHTML;
-    importBtn.addEventListener('click',
-        () => { parseSettings(settingString.value); });
+    importBtn.addEventListener("click", () => { parseSettings(settingString.value) });
 
     function parseSettings(string) {
-        if (string && string != '') {
+        if (string && string != "") {
             try {
                 var json = JSON.parse(string);
                 for (var setting in json) {
@@ -85,39 +71,32 @@ window.prompt = () => {
                 }
             } catch (err) {
                 console.error(err);
-                alert('Error importing settings.');
+                alert("Error importing settings.");
             }
         }
     }
 };
 
 // When Settings are recieved run scripts
-const { ipcRenderer } = require('electron');
-ipcRenderer.on('preloadSettings', (event, preferences) => {
+ipcRenderer.on("preloadSettings", (event, preferences) => {
+    const runScripts = () => { scripts.forEach(script => { (script)() }) };
+    const runRPCScript = () => { rpcscript.forEach(script => { (script)() }); };
+    
     let filePath = preferences;
     let userPrefs = JSON.parse(fs.readFileSync(filePath));
-    // Scripts
-    let scripts =
-        [
-            () => {
-                // Sky color script: Thank you Janrex
-                if (userPrefs['skyColor'] == true) {
-                    Reflect.defineProperty(Object.prototype, "skyCol", {
-                        value: userPrefs['skyColorValue'],
-                    });
-                }
+    let scripts = [ /* Scripts */ 
+        () => {
+            // Sky color script: Thank you Janrex
+            if (userPrefs['skyColor'] == true) {
+                Reflect.defineProperty(Object.prototype, "skyCol", {
+                    value: userPrefs['skyColorValue'],
+                });
             }
-        ]
-    const runScripts = () => { scripts.forEach(script => { (script)() }); };
-    runScripts();
+        }]; runScripts();
 
     // Special Discord RPC script
-    if (userPrefs['discordrpc'] == true) {
-        let rpcscript =
-            [
-                (require("./scripts/discord-rpc"))
-            ]
-        const runRPCScript = () => { rpcscript.forEach(script => { (script)() }); };
+    if (userPrefs["discordrpc"] == true) {
+        let rpcscript = [(require("./scripts/discord-rpc"))];
         runRPCScript();
     }
 });
