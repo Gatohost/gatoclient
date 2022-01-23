@@ -1,0 +1,76 @@
+/* Gatoclient Loading Screen */
+#initLoader{
+    background-image: url(https://media.discordapp.net/attachments/661004708852269080/867827020884213780/Screenshot_2021-07-22_131147.png?width=932&height=467)!important;
+    background-size:cover;
+}
+
+#loadInfoRHolder{
+    background-color:#0000003b;
+    padding: 10px 10px;
+}
+#loadInfoLHolder{
+    background-color:#0000003b;
+    padding: 10px 10px;
+}
+#loadTipsHolder{
+    background-color:#0000003b;
+    padding: 10px 10px;
+}
+#loadInfoLHolder::after{
+    position:fixed;
+    background-color:#0000003b;
+    padding: 10px 10px;
+    content: "Gatoclient by creepycatsttv";
+    width:370px;
+    bottom: -0.8%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#aHider{
+    display:none!important;
+}
+
+/* Gatoclient Branding */
+#mapInfo::before {
+    visibility: visible;
+    z-index:100;
+    content: 'Gatoclient | ';
+    width:600px;
+	bottom: 75px;
+	font-size:20px;
+	display:
+}
+
+/* Flashing Updates Box */
+#updateAd{
+	box-shadow:unset;
+	animation-name:freeKRPulse;
+	animation-duration:2s;
+	animation-iteration-count:infinite
+}
+
+#gatoMenuItem > img.menBtnIcn {
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-app-region: no-drag;
+}
+
+/* Gatoclient Badges */
+#gatoDeveloper::before{
+	background-image: url(https://cdn.discordapp.com/attachments/901905234861883432/901905274946846790/gatobadge.png); background-size: 75% 100%; background-repeat: no-repeat; content: "eee";font-size: 31;color: rgba(0, 0, 0, 0);
+}
+#gatoQT::before{
+	background-image: url(https://cdn.discordapp.com/emojis/903049364304461834.png?size=96); background-size: 75% 100%; background-repeat: no-repeat; content: "eee";font-size: 31;color: rgba(0, 0, 0, 0);
+}
+#gatoCC::before{
+	background-image: url(https://cdn.discordapp.com/attachments/901905234861883432/901905273302683678/ccbadge.png); background-size: 75% 100%; background-repeat: no-repeat; content: "eee";font-size: 31;color: rgba(0, 0, 0, 0);
+}
+#gatoKDev::before{
+	background-image: url(https://cdn.discordapp.com/attachments/901905234861883432/901905273839583283/devbadge.png); background-size: 75% 100%; background-repeat: no-repeat; content: "eee";font-size: 31;color: rgba(0, 0, 0, 0);
+}
+#gatoWinner::before{
+	background-image: url(https://cdn.discordapp.com/attachments/901905234861883432/901905270349889618/winnerbadge.png); background-size: 75% 100%; background-repeat: no-repeat; content: "eee";font-size: 31;color: rgba(0, 0, 0, 0);
+}
+#gatoRanked::before{
+	background-image: url(https://cdn.discordapp.com/emojis/902679654073241630.png?size=96); background-size: 75% 100%; background-repeat: no-repeat; content: "eee";font-size: 31;color: rgba(0, 0, 0, 0);
+}
