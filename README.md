@@ -41,7 +41,6 @@ _For Portable_
 - Download and run, the game is already installed in the exe
 
 ## [<img src='https://img.shields.io/badge/-Building%20Source-blue?style=flat' width=325px height=75px>](https://github.com/Gatohost/gatoclient)
-### THIS IS OUTDATED SOURCE CODE. CONSIDER USING PREPACKAGED SETUP
 Gatoclient is built using the same technique as IDKR uses, even though Gatoclient is a totally separate client
 
 You first need to install the source code.
