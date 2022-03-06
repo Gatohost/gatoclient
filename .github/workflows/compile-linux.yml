@@ -20,6 +20,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: List files in the repository
       run: ls ${{ github.workspace }}
+    - name: Navigate into Source
+      run: cd GatoClientSource
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
