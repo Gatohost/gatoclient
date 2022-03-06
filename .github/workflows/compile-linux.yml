@@ -26,7 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: |
-        ls ${{ github.workspace }}
-        npm ci
+    - run: npm ci
+      working-directory: GatoClientSource
     - run: npm run dist
+      working-directory: GatoClientSource
