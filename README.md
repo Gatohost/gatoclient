@@ -12,7 +12,7 @@ If you would like to support me, consider following me on my socials:
 [![Twitch](https://img.shields.io/badge/-Twitch%20-%23e2a1f7?style=for-the-badge&logo=twitch)](https://twitch.tv/creepycats) [![Youtube](https://img.shields.io/badge/-Youtube-%23ff5454?style=for-the-badge&logo=youtube)](https://www.youtube.com/c/creepycatsttv) [![Twitter](https://img.shields.io/badge/-Twitter-9cf?style=for-the-badge&logo=twitter)](https://twitter.com/creepycatsttv)
 
 ## Rewritten Features
-- Performance comaprable to Nullclient + 
+- Performance comaprable to Nullclient + Crankshaft
 - GatoAddons + Store (Userscripts that I personally approve can be downloaded in-client)
 - Customizable Loading screen
 - Resource Swapper (Documents > GatoclientResourceSwapper > Mod)
